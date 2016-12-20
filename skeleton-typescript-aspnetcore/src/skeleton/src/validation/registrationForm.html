@@ -1,0 +1,53 @@
+﻿<template>
+    <h2 class="col-sm-offset-2 col-sm-10">${heading}</h2>
+    <form submit.delegate="submit()" class="form-horizontal">
+        <!--<ul><li repeat.for="error of controller.errors">${error.message}</li></ul>-->
+
+        <div class="form-group" validation-errors.bind="firstNameErrors">
+            <label class="control-label col-sm-2" for="first">First Name</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="first" placeholder="First Name"
+                       value.bind="firstName & validate">
+            </div>
+            <div class="col-sm-4">
+                <span class="help-block" repeat.for="errorInfo of firstNameErrors">
+                    ${errorInfo.error.message}
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group" validation-errors.bind="lastNameErrors">
+            <label class="control-label col-sm-2" for="last">Last Name</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="last" placeholder="Last Name"
+                       value.bind="lastName & validate">
+            </div>
+            <div class="col-sm-4">
+                <span class="help-block" repeat.for="errorInfo of lastNameErrors">
+                    ${errorInfo.error.message}
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group" validation-errors.bind="emailErrors">
+            <label class="control-label col-sm-2" for="email">Email</label>
+            <div class="col-sm-6">
+                <input type="email" class="form-control" id="email" placeholder="Email"
+                       value.bind="email & validate">
+            </div>
+            <div class="col-sm-4">
+                <span class="help-block" repeat.for="errorInfo of emailErrors">
+                    ${errorInfo.error.message}
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+    <div>
+        <h3>${errorMessage}</h3>
+    </div>
+</template>
