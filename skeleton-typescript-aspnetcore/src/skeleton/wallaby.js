@@ -7,8 +7,10 @@ module.exports = function(wallaby) {
       {pattern: 'wwwroot/jspm_packages/system.js', instrument: false},
       {pattern: 'wwwroot/config.js', instrument: false},
 
-      {pattern: 'src/**/*.ts', load: false},
-      {pattern: 'test/unit/setup.ts', load: false}
+      { pattern: 'src/**/*.ts', load: false },
+      { pattern: 'src/**/*.html', load: false, instrument: false },
+      {pattern: 'test/unit/setup.ts', load: false},
+      {pattern: 'test/unit/resources/validation/index.ts', load: false}
 
     ],
 
@@ -31,7 +33,8 @@ module.exports = function(wallaby) {
       System.config({
         paths: {
           '*': '*',
-          'src/*': 'src/*'
+          'src/*': 'src/*',
+          'test/*': 'test/*'
         }
       });
       for (; i < len; i++) {
@@ -47,6 +50,6 @@ module.exports = function(wallaby) {
         }).catch(function (e) {setTimeout(function () { throw e; }, 0); });
     },
 
-    debug: false
+    debug: true
   };
 };
